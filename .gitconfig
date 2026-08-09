@@ -1,3 +1,9 @@
+
+[commit]
+        # In detailed commit code, it generates "---- >8 ----",
+        # anything after the lint gets ignored instead of using "#" as
+        # ignore character.
+        cleanup = scissors
 [tag]
         sort = version:refname
 [init]
@@ -21,3 +27,5 @@
         autoSquash = true
         autoStash = true
         updateRefs = true
+[credential]
+        helper = osxkeychain
