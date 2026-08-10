@@ -1,9 +1,9 @@
-
 [commit]
         # In detailed commit code, it generates "---- >8 ----",
         # anything after the lint gets ignored instead of using "#" as
         # ignore character.
         cleanup = scissors
+        verbose = true
 [tag]
         sort = version:refname
 [init]
@@ -18,8 +18,6 @@
         autoSetupRemote = true
 [help]
         autocorrect = prompt
-[commit]
-        verbose = true
 [rerere]
         enabled = true
         autoupdate = true
@@ -28,4 +26,8 @@
         autoStash = true
         updateRefs = true
 [credential]
+{{- if eq .chezmoi.os "darwin" }}
         helper = osxkeychain
+{{- else if eq .chezmoi.os "linux" }}
+        helper = cache --timeout=3600
+{{- end }}
