@@ -1,33 +1,25 @@
 # .dotfiles
 
-My dotfiles, managed with [chezmoi](https://www.chezmoi.io/).
+My dotfiles, used to configure git, vim and bash.
+This dotfile repository is managed with [chezmoi](https://www.chezmoi.io/).
 
 ## Usage
 
+```sh
 ### New machine
+$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply IestynGage
+# Clones the repo into `~/.local/share/chezmoi` and applies it to `$HOME`
 
-Install [chezmoi](https://www.chezmoi.io/install/), then bootstrap in one step:
+### Existing machine 
+$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init IestynGage
+$ chezmoi diff
+$ chezmoi apply
 
-    sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply IestynGage
 
-This clones the repo into `~/.local/share/chezmoi` and applies it to `$HOME`.
+### Editing 
+$ chezmoi cd
+# cd'd you into the IestynGage dotfiles repository.
 
-### Existing machine
-
-Pull the latest changes and apply them:
-
-    chezmoi update
-
-Preview what would change before applying:
-
-    chezmoi diff
-
-### Editing
-
-Edit a managed file and reapply in one step:
-
-    chezmoi edit --apply ~/.vimrc
-
-Or edit the source directly:
-
-    chezmoi cd
+$ chezmoi apply .vimrc
+$ chezmoi edit --apply ~/.vimrc
+```
