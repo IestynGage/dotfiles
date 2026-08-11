@@ -1,0 +1,11 @@
+{{/* ----- Prompt String ----- */}}
+{{- template "common_prompt" (dict 
+    "prompt_char" "\\$" 
+    "current_dir" "\\w" 
+    "user_and_host" "[\\u@\\h]" 
+    "user" "[\\u]"
+    "yellow" "\\[\\033[01;33m\\]"
+    "green" "\\[\\033[01;32m\\]"
+    "blue" "\\[\\033[01;34m\\]"
+    "no_color" "\\[\\033[00m\\]"
+) -}}

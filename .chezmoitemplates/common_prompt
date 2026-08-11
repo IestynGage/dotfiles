@@ -1,0 +1,30 @@
+{{/* 
+  # =======================================
+  # Prompt String 
+  # =======================================
+  # Creates the prompt string, with username, machine name, path,
+  # and git branch when inside a git repository.
+  # Example
+  # [user] path/to/directory
+  # [user@machine] path/to/directory
+  # [user] path/to/directory (branch-name)
+  # [user@machine] path/to/directory (branch-name)
+*/}}
+YELLOW="{{ .yellow }}"
+GREEN="{{ .green }}"
+BLUE="{{ .blue }}"
+NO_COLOR="{{ .no_color }}"
+
+# Check if the session is over SSH
+if [ -n "$SSH_CONNECTION" ]; then
+  # SSH session: Include both user and host name [user@host]
+  USER_HOST="{{ .user_and_host }}"
+else
+  # Local session: Only username [user]
+  USER_HOST="{{ .user }}"
+fi
+
+function parse_git_branch () {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+PROMPT="$GREEN$USER_HOST$NO_COLOR $BLUE{{ .current_dir }}$NO_COLOR $YELLOW\$(parse_git_branch)$NO_COLOR {{ .prompt_char }} "

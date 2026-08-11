@@ -1,0 +1,14 @@
+
+{{/* ----- Prompt String ----- */}}
+setopt PROMPT_SUBST # Enable parameter expansion in prompt string
+
+{{- template "common_prompt" (dict 
+    "prompt_char"   "%#" 
+    "current_dir"   "%~" 
+    "user_and_host" "[%n@%m]" 
+    "user"          "[%n]"
+    "yellow" "%F{yellow}"
+    "green" "%F{green}"
+    "blue" "%F{blue}"
+    "no_color" "%f"
+) -}}

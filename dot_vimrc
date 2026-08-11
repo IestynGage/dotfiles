@@ -1,44 +1,44 @@
 " ==========================================
 " 1. Essential Usability Settings
 " ==========================================
-set nocompatible         " Disable compatibility with old Vi (fixes quirks)
-set encoding=utf-8       " Force UTF-8 encoding
-set number               " Show line numbers
-set mouse=a              " Enable mouse support for scrolling and resizing
-set history=1000         " Increase undo and command history limit
-set clipboard=unnamedplus " Use system clipboard for copy/paste (if supported)
+set nocompatible         " Disable compatibility with old Vi (fixes quirks)"
+set encoding=utf-8       " Force UTF-8 encoding"
+set number               " Show line numbers"
+set mouse=a              " Enable mouse support for scrolling and resizing"
+set history=1000         " Increase undo and command history limit"
+set clipboard=unnamedplus " Use system clipboard for copy/paste (if supported)"
 
 " ==========================================
 " 2. Indentation & Tabs (2 Spaces)
 " ==========================================
-set expandtab            " Convert tabs to spaces
-set tabstop=2            " Insert 2 spaces for a tab
-set shiftwidth=2         " Number of spaces for auto-indenting
-set softtabstop=2        " Make backspace delete 2 spaces like a tab
-set autoindent           " Copy indent from current line on newline
-set smartindent          " Intelligent indentation for C-like languages
+set expandtab            " Convert tabs to spaces"
+set tabstop=2            " Insert 2 spaces for a tab"
+set shiftwidth=2         " Number of spaces for auto-indenting"
+set softtabstop=2        " Make backspace delete 2 spaces like a tab"
+set autoindent           " Copy indent from current line on newline"
+set smartindent          " Intelligent indentation for C-like languages"
 
 " ==========================================
 " 3. Search Performance
 " ==========================================
-set hlsearch             " Highlight search matches
-set incsearch            " Show matches dynamically while typing
-set ignorecase           " Ignore case in search patterns
-set smartcase            " Override ignorecase if search has capital letters
+set hlsearch             " Highlight search matches"
+set incsearch            " Show matches dynamically while typing"
+set ignorecase           " Ignore case in search patterns"
+set smartcase            " Override ignorecase if search has capital letters"
 
 " ==========================================
 " 4. Visuals & UI Quirks
 " ==========================================
-syntax on                " Enable syntax highlighting
-set showmode             " Display current mode (Insert, Visual, etc.)
-set showcmd              " Show partial commands in status line
-set cursorline           " Highlight the screen line of the cursor
-set lazyredraw           " Don't redraw screen during macros (faster)
-set wildmenu             " Visual autocomplete for command line
+syntax on                " Enable syntax highlighting"
+set showmode             " Display current mode (Insert, Visual, etc.)"
+set showcmd              " Show partial commands in status line"
+set cursorline           " Highlight the screen line of the cursor"
+set lazyredraw           " Don't redraw screen during macros (faster)"
+set wildmenu             " Visual autocomplete for command line"
 
 " ==========================================
 " 5. Backup & Swaps (Prevent Clutter)
 " ==========================================
-set nobackup             " Don't create annoying backup files
+set nobackup             " Don't create annoying backup files"
 set nowritebackup
-set noswapfile           " Disable .swp files (or configure a directory)
+set noswapfile           " Disable .swp files (or configure a directory)"
