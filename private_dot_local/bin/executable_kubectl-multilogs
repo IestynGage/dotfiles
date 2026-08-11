@@ -1,0 +1,24 @@
+#!/bin/bash
+
+usage() {
+    cat <<EOM
+Usage: $(basename $0) pods -d
+
+Follows the logs of several pods at once.
+
+Options: 
+  -d, --deployment Get logs of all pods from deployment resource.
+  
+Examples:
+  # Returns logs of foo-1-service and foo-2-service.
+  $(basename $0) foo-1-service foo-2-service
+
+Kubernetes secrets <https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/>
+Script origin <https://github.com/IestynGage/terminal/tree/main>
+EOM
+    exit 1
+}
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+fi

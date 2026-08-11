@@ -1,0 +1,24 @@
+#!/bin/bash
+
+usage() {
+    cat <<EOM
+Usage: $(basename $0) [JOB NAME]
+
+Reruns a job.
+
+Where 
+  [JOB NAME] you wish to rerun.
+
+Kubernetes secrets <https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/>
+Homebrew plugin <https://github.com/IestynGage/terminal/>
+EOM
+    exit 1
+}
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+fi
+
+kubectl get job $1 -o yaml > "$1.yaml"
+kubectl delete job $1
+kubectl apply -f $1.yaml

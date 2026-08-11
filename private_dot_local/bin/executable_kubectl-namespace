@@ -1,0 +1,28 @@
+#!/bin/bash
+
+usage() {
+    cat <<EOM
+Usage: $(basename $0) [NAMESPACE]
+
+Lists the namespace in the current Kubernetes namespace,
+or sets the current context namespace to [NAMESPACE].
+
+Where 
+  [NAMESPACE] you wish to switch to.
+
+Kubernetes secrets <https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/>
+Homebrew plugin <>
+EOM
+    exit 1
+}
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+fi
+
+if [ $# -eq 0 ]
+  then
+    kubectl get namespaces
+else
+  kubectl config set-context --current --namespace $1
+fi
