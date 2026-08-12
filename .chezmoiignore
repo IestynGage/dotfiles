@@ -1,1 +1,8 @@
 README.md
+
+{{ if not (has "zsh" .shells) }}
+.zshrc
+{{ end }}
+{{ if not (has "bash" .shells) }}
+.bashrc
+{{ end }}

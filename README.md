@@ -5,13 +5,11 @@ This dotfile repository is managed with [chezmoi](https://www.chezmoi.io/).
 
 ## Usage
 
-```sh
-### New machine
-$ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply IestynGage
-# Clones the repo into `~/.local/share/chezmoi` and applies it to `$HOME`
-
-### Existing machine 
+```sh 
 $ sh -c "$(curl -fsLS get.chezmoi.io)" -- init IestynGage
+# Clones the repo into `~/.local/share/chezmoi` and applies it to `$HOME`
+$ chezmoi edit-config
+# Adds the configuration values needed, see ## config
 $ chezmoi diff
 $ chezmoi apply
 
@@ -22,4 +20,14 @@ $ chezmoi cd
 
 $ chezmoi apply .vimrc
 $ chezmoi edit --apply ~/.vimrc
+```
+
+## Config 
+
+```
+[data]
+  git_name = ""
+  git_email = ""
+  git_default_branch = ""
+  shells = [] # Decideds the shells. Allowed values 'bash' and 'zsh'
 ```
