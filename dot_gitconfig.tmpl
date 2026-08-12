@@ -10,12 +10,14 @@
 [user]
         name = {{ .git_name }}
         email = {{ .git_email }}
-[commit]
-        # In detailed commit code, it generates "---- >8 ----",
-        # anything after the lint gets ignored instead of using "#" as
-        # ignore character.
-        cleanup = scissors
-        verbose = true
+
+[filter "lfs"]
+       clean = git-lfs clean -- %f
+       smudge = git-lfs smudge -- %f
+       process = git-lfs filter-process
+       required = true
+{{- end -}}
+
 [tag]
         sort = version:refname
 [init]
