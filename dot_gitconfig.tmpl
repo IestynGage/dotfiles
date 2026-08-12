@@ -1,4 +1,5 @@
-{{- if eq .chezmoi.os "darwin" }}[core]
+{{- if eq .chezmoi.os "darwin" -}}
+[core]
         excludesfile = /Users/iestyngage/.gitignore_global
 [difftool "sourcetree"]
         cmd = opendiff \"$LOCAL\" \"$REMOTE\"
@@ -6,22 +7,29 @@
 [mergetool "sourcetree"]
         cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
         trustExitCode = true
-{{- end }}
+{{- end -}}
 [user]
         name = {{ .git_name }}
         email = {{ .git_email }}
-
+{{- if lookPath "git-lfs" }}
 [filter "lfs"]
        clean = git-lfs clean -- %f
        smudge = git-lfs smudge -- %f
        process = git-lfs filter-process
        required = true
 {{- end -}}
-
+{{- if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+[credential]
+       helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+       store = manager
+{{- else if eq .chezmoi.os "darwin" -}}
+[credential]
+        helper = osxkeychain
+{{- end }}
 [tag]
         sort = version:refname
 [init]
-        defaultBranch = main
+        defaultBranch = {{ .git_default_branch |  default "main" }}
 [diff]
         algorithm = histogram
         colorMoved = plain
@@ -32,6 +40,12 @@
         autoSetupRemote = true
 [help]
         autocorrect = prompt
+[commit]
+        verbose = true
+        # When commiting code with "scissors", it generates "---- >8 ----", 
+        # all content below the line is ignored instead of using "#" on
+        # each line
+        cleanup = scissors
 [rerere]
         enabled = true
         autoupdate = true
@@ -39,9 +53,3 @@
         autoSquash = true
         autoStash = true
         updateRefs = true
-[credential]
-{{- if eq .chezmoi.os "darwin" }}
-        helper = osxkeychain
-{{- else if eq .chezmoi.os "linux" }}
-        helper = cache --timeout=3600
-{{- end }}
