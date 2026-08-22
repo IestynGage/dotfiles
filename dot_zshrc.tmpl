@@ -13,4 +13,7 @@ setopt PROMPT_SUBST # Enable parameter expansion in prompt string
     "no_color" "%f"
 ) -}}
 
+{{- template "common_shell" . }}
+
+# Add shell script to path (i.e. `git recent`)
 export PATH="${HOME}/.local/bin:${PATH}"
