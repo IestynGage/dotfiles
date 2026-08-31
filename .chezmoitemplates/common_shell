@@ -1,6 +1,3 @@
-# Load fuzzy finder
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 {{- $nvmDir := printf "%s/.nvm" .chezmoi.homeDir -}}
 {{- if stat $nvmDir }}
 # Setup Node version manager (nvm)
